@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IPL 2025 Points Table</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#fff;color:#202124}
+.top{height:64px;border-bottom:1px solid #e5e7eb;display:flex;align-items:center;padding:0 28px;gap:18px}
+.logo{font-size:22px;font-weight:700;color:#4285f4}
+.search{flex:1;max-width:720px;height:44px;border:1px solid #dfe1e5;border-radius:24px;display:flex;align-items:center;padding:0 18px;color:#5f6368;box-shadow:0 1px 3px rgba(60,64,67,.08)}
+.search span{margin-left:10px;font-size:15px}
+.main{max-width:1000px;margin:26px auto;padding:0 22px}
+.breadcrumb{font-size:13px;color:#70757a;margin-bottom:14px}
+h1{font-size:27px;margin:0 0 8px}
+.sub{font-size:14px;color:#5f6368;margin-bottom:22px}
+.card{border:1px solid #dadce0;border-radius:14px;overflow:hidden;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+.cardhead{padding:18px 20px;border-bottom:1px solid #eee;display:flex;justify-content:space-between;align-items:center}
+.cardhead strong{font-size:18px}
+.select{border:1px solid #dadce0;border-radius:8px;padding:8px 12px;background:#fff}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{background:#f8f9fa;color:#5f6368;text-align:center;font-weight:600;padding:12px 8px}
+th:nth-child(2),td:nth-child(2){text-align:left}
+td{padding:13px 8px;text-align:center;border-top:1px solid #f0f0f0}
+.team{font-weight:600;display:flex;align-items:center;gap:10px}
+.badge{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:#f1f3f4;font-size:11px;font-weight:700}
+.pos{font-weight:700;color:#5f6368}
+.qualified{background:#f0fdf4}
+.qualified .pos{color:#188038}
+.pts{font-weight:700;font-size:16px}
+.nrr.posn{color:#188038}.nrr.negn{color:#d93025}
+.status{font-size:11px;font-weight:700;padding:3px 6px;border-radius:10px;margin-left:5px}
+.q{background:#e6f4ea;color:#137333}.e{background:#fce8e6;color:#c5221f}
+.note{padding:16px 20px;color:#5f6368;font-size:12px;border-top:1px solid #eee}
+.footer{margin-top:18px;font-size:12px;color:#70757a}
+@media(max-width:700px){.main{padding:0 10px}.card{overflow-x:auto}table{min-width:760px}.top{padding:0 12px}.search{max-width:none}}
+</style>
+</head>
+<body>
+<div class="top">
+  <div class="logo">Sports</div>
+  <div class="search">🔍 <span>IPL 2025 points table</span></div>
+</div>
+
+<main class="main">
+  <div class="breadcrumb">Cricket › Indian Premier League › 2025</div>
+  <h1>IPL 2025 Points Table</h1>
+  <div class="sub">Indian Premier League 2025 · Final standings</div>
+
+  <section class="card">
+    <div class="cardhead">
+      <strong>Points Table</strong>
+      <select class="select" id="season">
+        <option>IPL 2025</option>
+      </select>
+    </div>
+
+    <table>
+      <thead>
+        <tr><th>#</th><th>Team</th><th>M</th><th>W</th><th>L</th><th>T</th><th>NR</th><th>PTS</th><th>NRR</th></tr>
+      </thead>
+      <tbody id="tableBody"></tbody>
+    </table>
+    <div class="note">M = Matches · W = Won · L = Lost · T = Tied · NR = No Result · PTS = Points · NRR = Net Run Rate</div>
+  </section>
+  <div class="footer">Data shown for IPL 2025 final league-stage standings.</div>
+</main>
+
+<script>
+const teams = [
+ ["PBKS","Punjab Kings",14,9,4,0,1,19,"+0.372",true],
+ ["RCB","Royal Challengers Bengaluru",14,9,4,0,1,19,"+0.301",true],
+ ["GT","Gujarat Titans",14,9,5,0,0,18,"+0.254",true],
+ ["MI","Mumbai Indians",14,8,6,0,0,16,"+1.142",true],
+ ["DC","Delhi Capitals",14,7,6,0,1,15,"+0.011",false],
+ ["SRH","Sunrisers Hyderabad",14,6,7,0,1,13,"-0.241",false],
+ ["KKR","Kolkata Knight Riders",14,5,7,0,2,12,"-0.305",false],
+ ["LSG","Lucknow Super Giants",14,6,8,0,0,12,"-0.376",false],
+ ["RR","Rajasthan Royals",14,4,10,0,0,8,"-0.549",false],
+ ["CSK","Chennai Super Kings",14,4,10,0,0,8,"-0.647",false]
+];
+
+document.getElementById("tableBody").innerHTML = teams.map((t,i)=>`
+<tr class="${t[9]?'qualified':''}">
+<td class="pos">${i+1}</td>
+<td><div class="team"><span class="badge">${t[0]}</span>${t[1]} ${t[9]?'<span class="status q">Q</span>':'<span class="status e">E</span>'}</div></td>
+<td>${t[2]}</td><td>${t[3]}</td><td>${t[4]}</td><td>${t[5]}</td><td>${t[6]}</td>
+<td class="pts">${t[7]}</td><td class="nrr ${t[8][0]=='+'?'posn':'negn'}">${t[8]}</td>
+</tr>`).join("");
+</script>
+</body>
+</html>
