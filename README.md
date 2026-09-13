@@ -26,6 +26,8 @@ To run tests, run the following command
 ```bash
   mvn clean test
 ```
+### Note
+Application Source file attached in repository
 
 ## SDET Portfolio
 
